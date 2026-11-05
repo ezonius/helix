@@ -1,0 +1,49 @@
+# Helix configuration - GENERATED FILE, do not edit.
+# Edit the fragments in keys/*.toml, then run:
+#     ./build-config.sh      (Linux/macOS)
+#     .\build-config.ps1     (Windows)
+# and reload with :config-reload inside Helix.
+# generated for platform: windows
+
+theme = "ashen"
+
+[editor]
+default-yank-register = "+"
+
+[keys.normal]
+i = "move_visual_line_up"
+j = "move_char_left"
+k = "move_visual_line_down"
+a = "insert_mode"
+h = "append_mode"
+ret = ["open_below", "normal_mode"]
+x = "delete_selection_noyank"
+backspace = ["move_char_left", "delete_selection_noyank"]
+A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
+A-down = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+S-left = ["select_mode", "move_prev_long_word_start"]
+S-right = ["select_mode", "move_next_long_word_start"]
+S-home = ["select_mode", "goto_line_start"]
+S-end = ["select_mode", "goto_line_end"]
+
+[keys.select]
+"$" = "goto_line_start"
+"^" = "goto_line_end"
+C-up = ["page_cursor_half_up", "goto_line_end"]
+C-down = ["page_cursor_half_down", "goto_line_end"]
+S-up = ["page_cursor_half_up", "goto_line_end"]
+S-down = ["page_cursor_half_down", "goto_line_end"]
+C-j = ["move_prev_long_word_start", "move_prev_long_word_start"]
+C-l = ["move_next_long_word_start", "move_next_long_word_start"]
+S-home = ["goto_line_start"]
+S-end = ["goto_line_end"]
+p = "replace_with_yanked"
+
+[keys.insert]
+S-up = ["normal_mode", "page_cursor_half_up", "goto_line_end"]
+C-up = ["normal_mode", "page_cursor_half_up", "goto_line_end"]
+S-down = ["normal_mode", "page_cursor_half_down", "goto_line_end"]
+C-down = ["normal_mode", "page_cursor_half_down", "goto_line_end"]
+
+[keys.normal.space]
+B = [":echo %sh{powershell -NoProfile -ExecutionPolicy Bypass -File %%APPDATA%%\\helix\\build-config.ps1}", ":config-reload"]

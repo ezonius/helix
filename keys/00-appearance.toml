@@ -1,0 +1,6 @@
+# Appearance / editor defaults.
+
+theme = "ashen"
+
+[editor]
+default-yank-register = "+"

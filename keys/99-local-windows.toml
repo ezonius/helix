@@ -1,0 +1,18 @@
+# platform: windows
+#
+# <space>B  rebuild config.toml from keys/*.toml, then reload it, without
+#           leaving Helix. The script's result shows in the statusline.
+#
+# Only this file is merged on Windows; the other OS gets 99-local-unix.toml.
+#
+# Why not simply [":sh <script>", ":config-reload"]?
+#   :sh / :run-shell-command is asynchronous - Helix does not wait for it, so
+#   :config-reload would run before the script finished writing config.toml.
+#   A %sh{} expansion is evaluated synchronously while the command line is
+#   parsed, so the file is already rebuilt when the next command runs.
+#
+# %%APPDATA%% is unescaped to %APPDATA% by Helix (a literal percent must be
+# doubled inside an expansion) and then expanded by cmd.
+
+[keys.normal.space]
+B = [":echo %sh{powershell -NoProfile -ExecutionPolicy Bypass -File %%APPDATA%%\\helix\\build-config.ps1}", ":config-reload"]

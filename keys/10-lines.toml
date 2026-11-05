@@ -1,0 +1,8 @@
+# Line handling (vimrc: <Enter> = o<Esc>, x = "_x, <BS> = "_h<Delete>)
+#
+# Displaces: x = extend_line_below (use `X` instead), ret/backspace (unbound).
+
+[keys.normal]
+ret = ["open_below", "normal_mode"]
+x = "delete_selection_noyank"
+backspace = ["move_char_left", "delete_selection_noyank"]

@@ -1,0 +1,8 @@
+# vimrc: C-j = 2B (back two WORDs), C-l = 2W (forward two WORDs)
+#
+# Currently only in select mode - the [keys.normal] pair was commented out in
+# the hand-written config.
+
+[keys.select]
+"C-j" = ["move_prev_long_word_start", "move_prev_long_word_start"]
+"C-l" = ["move_next_long_word_start", "move_next_long_word_start"]

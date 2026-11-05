@@ -1,0 +1,17 @@
+# Scroll + jump to end of line ("M$" in the vimrc).
+#
+# Currently only in select and insert mode - the [keys.normal] block was
+# commented out in the hand-written config. Add a [keys.normal] block here to
+# re-enable C-i/C-k/C-up/C-down/S-up/S-down there (displaces C-i = jump_forward).
+
+[keys.select]
+"C-up" = ["page_cursor_half_up", "goto_line_end"]
+"C-down" = ["page_cursor_half_down", "goto_line_end"]
+"S-up" = ["page_cursor_half_up", "goto_line_end"]
+"S-down" = ["page_cursor_half_down", "goto_line_end"]
+
+[keys.insert]
+"S-up" = ["normal_mode", "page_cursor_half_up", "goto_line_end"]
+"C-up" = ["normal_mode", "page_cursor_half_up", "goto_line_end"]
+"S-down" = ["normal_mode", "page_cursor_half_down", "goto_line_end"]
+"C-down" = ["normal_mode", "page_cursor_half_down", "goto_line_end"]

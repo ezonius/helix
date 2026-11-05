@@ -1,0 +1,16 @@
+# Cursor layout from nvim/vim/vimrc.global.vim:
+#   i = up, j = left, k = down, l = right, h = append, a = insert
+#
+# Displaces these Helix defaults:
+#   i = insert_mode      -> use `a`
+#   h = move_char_left   -> use `j`
+#   j = move_visual_line_down -> use `k`
+#   k = move_visual_line_up   -> use `i`
+#   a = append_mode      -> use `h`
+
+[keys.normal]
+i = "move_visual_line_up"
+j = "move_char_left"
+k = "move_visual_line_down"
+a = "insert_mode"
+h = "append_mode"

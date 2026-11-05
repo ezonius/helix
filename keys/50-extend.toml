@@ -1,0 +1,12 @@
+# vimrc: S-Left = vB, S-Right = vW, S-Home = v^, S-End = V$
+# In Helix the first key enters select mode, the second extends.
+
+[keys.normal]
+"S-left" = ["select_mode", "move_prev_long_word_start"]
+"S-right" = ["select_mode", "move_next_long_word_start"]
+"S-home" = ["select_mode", "goto_line_start"]
+"S-end" = ["select_mode", "goto_line_end"]
+
+[keys.select]
+"S-home" = ["goto_line_start"]
+"S-end" = ["goto_line_end"]
