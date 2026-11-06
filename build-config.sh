@@ -91,8 +91,14 @@ platform_matches() {  # $1 = token list, $2 = fragment name
   return 1
 }
 
+# Order: --config-dir > HELIX_CONFIG_DIR > the directory this script lives in
+# (when it contains keys/) > the platform default. The script-dir rule makes a
+# clone usable from anywhere, e.g. HELIX_CONFIG=/tmp/helix ./build-config.sh.
 resolve_config_dir() {
   if [[ -n ${HELIX_CONFIG_DIR:-} ]]; then printf '%s\n' "$HELIX_CONFIG_DIR"; return; fi
+  local self_dir
+  self_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" 2>/dev/null && pwd) || self_dir=""
+  if [[ -n $self_dir && -d $self_dir/keys ]]; then printf '%s\n' "$self_dir"; return; fi
   if [[ -n ${APPDATA:-} && ( ${OS:-} == Windows_NT || -n ${MSYSTEM:-} ) ]] && command -v cygpath >/dev/null 2>&1; then
     printf '%s\n' "$(cygpath -u "$APPDATA")/helix"; return
   fi

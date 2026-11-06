@@ -66,8 +66,12 @@ function Note([string]$Message) {
     if (-not $Quiet) { Write-Host $Message }
 }
 
+# Order: -ConfigDir > HELIX_CONFIG_DIR > the directory this script lives in
+# (when it contains keys\) > the platform default. The script-dir rule makes a
+# clone usable from anywhere, e.g. - on another drive or a temp test clone.
 function Resolve-HelixConfigDir {
     if ($env:HELIX_CONFIG_DIR) { return $env:HELIX_CONFIG_DIR }
+    if ($PSScriptRoot -and (Test-Path (Join-Path $PSScriptRoot 'keys'))) { return $PSScriptRoot }
     if ($env:OS -eq 'Windows_NT' -and $env:APPDATA) { return (Join-Path $env:APPDATA 'helix') }
     if ($env:XDG_CONFIG_HOME) { return (Join-Path $env:XDG_CONFIG_HOME 'helix') }
     return (Join-Path $HOME '.config/helix')
@@ -187,13 +191,16 @@ function Ensure-Table([string]$TableKey, [string[]]$Segments) {
         Depth    = $Segments.Count
         Index    = $tableInfo.Count
     }
-    $tables[$TableKey] = [ordered]@{}
+    $tables[$TableKey] = New-Object System.Collections.Specialized.OrderedDictionary ([System.StringComparer]::Ordinal)
 }
 
 # tableKey -> ordered dict of keyText -> @{ Value; Source }
-$tables = [ordered]@{}
+# Ordinal comparers: TOML keys are case-sensitive, so `o` and `O` are distinct
+# bindings. (A plain @{} / [ordered]@{} compares them case-insensitively and
+# silently drops one of them.)
+$tables = New-Object System.Collections.Specialized.OrderedDictionary ([System.StringComparer]::Ordinal)
 # tableKey -> @{ Segments; Depth; Index }
-$tableInfo = [ordered]@{}
+$tableInfo = New-Object System.Collections.Specialized.OrderedDictionary ([System.StringComparer]::Ordinal)
 $overrides = New-Object System.Collections.Generic.List[string]
 
 if (-not $Platform) { $Platform = Get-CurrentPlatform }

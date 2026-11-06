@@ -29,6 +29,7 @@ C-i = "no_op" # Remove old jump_forward
 C-o = "no_op" # Remove old jump_backward
 ret = ["open_below", "normal_mode"]
 S-ret = ["open_above", "normal_mode"]
+o = "no_op" # old open_below
 O = "keep_selections" # old open_above
 backspace = ["move_char_left", "delete_selection_noyank"]
 A-up = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
