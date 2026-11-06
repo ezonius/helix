@@ -1,9 +1,0 @@
-# $ and ^ swapped (vimrc: noremap $ ^ / noremap ^ $).
-#
-# Currently only in select mode - the [keys.normal] pair was commented out in
-# the hand-written config. Add a [keys.normal] block here to re-enable it there
-# (normal mode displaces $ = shell_keep_pipe; `gh`/`gl` still do line start/end).
-
-[keys.select]
-"$" = "goto_line_start"
-"^" = "goto_line_end"

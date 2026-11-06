@@ -4,5 +4,11 @@
 
 [keys.normal]
 ret = ["open_below", "normal_mode"]
-x = "delete_selection_noyank"
+"S-ret" = ["open_above", "normal_mode"]
+"o" = "no_op" # old open_below
+"O" = "keep_selections" # old open_above
+# x = "delete_selection_noyank"
 backspace = ["move_char_left", "delete_selection_noyank"]
+
+
+

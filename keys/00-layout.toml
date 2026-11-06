@@ -1,16 +1,53 @@
 # Cursor layout from nvim/vim/vimrc.global.vim:
-#   i = up, j = left, k = down, l = right, h = append, a = insert
-#
-# Displaces these Helix defaults:
-#   i = insert_mode      -> use `a`
-#   h = move_char_left   -> use `j`
-#   j = move_visual_line_down -> use `k`
-#   k = move_visual_line_up   -> use `i`
-#   a = append_mode      -> use `h`
-
+# i = up, j = left, k = down, l = right
+# The idea is is to replace the movement/direction keys from hjkl to ijkl, including in modifiers and minor modes. 'h' should generally take the functional that 'i' had.
 [keys.normal]
 i = "move_visual_line_up"
 j = "move_char_left"
 k = "move_visual_line_down"
+
 a = "insert_mode"
 h = "append_mode"
+
+S-a = "insert_at_line_start"
+S-h = "insert_at_line_end"
+
+[keys.normal.g]
+i = "move_line_up"
+j = "goto_line_start"
+k = "move_line_down"
+
+h = "goto_implementation"
+
+[keys.normal."C-w"]
+i = "jump_view_up"
+k = "jump_view_down"
+j = "jump_view_left"
+
+C-i = "jump_view_up"
+C-k = "jump_view_down"
+C-j = "jump_view_left"
+
+S-j = "swap_view_left"
+S-i = "swap_view_up"
+S-k = "swap_view_down"
+
+h = "no_op"
+S-h = "no_op"
+
+
+[keys.normal.space.w]
+i = "jump_view_up"
+k = "jump_view_down"
+j = "jump_view_left"
+
+C-i = "jump_view_up"
+C-k = "jump_view_down"
+C-j = "jump_view_left"
+
+S-j = "swap_view_left"
+S-i = "swap_view_up"
+S-k = "swap_view_down"
+
+h = "no_op"
+S-h = "no_op"

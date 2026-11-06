@@ -4,14 +4,14 @@
 # commented out in the hand-written config. Add a [keys.normal] block here to
 # re-enable C-i/C-k/C-up/C-down/S-up/S-down there (displaces C-i = jump_forward).
 
+[keys.normal]
+"C-up" = "@z10<up>10<up>"
+"C-down" = "@z10<down>10<down>"
+
 [keys.select]
-"C-up" = ["page_cursor_half_up", "goto_line_end"]
-"C-down" = ["page_cursor_half_down", "goto_line_end"]
-"S-up" = ["page_cursor_half_up", "goto_line_end"]
-"S-down" = ["page_cursor_half_down", "goto_line_end"]
+"C-up" = "@z10<up>10<up>"
+"C-down" = "@z10<down>10<down>"
 
 [keys.insert]
-"S-up" = ["normal_mode", "page_cursor_half_up", "goto_line_end"]
-"C-up" = ["normal_mode", "page_cursor_half_up", "goto_line_end"]
-"S-down" = ["normal_mode", "page_cursor_half_down", "goto_line_end"]
-"C-down" = ["normal_mode", "page_cursor_half_down", "goto_line_end"]
+"C-up" = "@<esc>z10<up>"
+"C-down" = "@<esc>z10<down>"

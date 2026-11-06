@@ -1,0 +1,14 @@
+[keys.normal]
+"C-s" = ":w" # Replace save jumplist with save file
+"C-q" = "save_selection" # Previously C-s
+
+# New Jumplist
+"A-left" = "jump_backward"
+"A-right" = "jump_forward"
+"C-i" = "no_op" # Remove old jump_forward
+"C-o" = "no_op" # Remove old jump_backward
+
+
+[keys.normal.space]
+space = "command_palette"
+";" = "toggle_comments"

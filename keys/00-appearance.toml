@@ -1,6 +1,20 @@
 # Appearance / editor defaults.
 
-theme = "ashen"
+theme = "dark-synthwave"
 
 [editor]
 default-yank-register = "+"
+
+[editor.cursor-shape]
+insert = "bar"
+
+
+[editor.whitespace.render]
+newline = "all"
+space = "none"
+tab = "all"
+
+[editor.whitespace.characters]
+newline = "⏎"
+tab = "→"
+space = "·"

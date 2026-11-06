@@ -1,6 +1,0 @@
-# vimrc: vnoremap p "_dP (paste over the selection without yanking it)
-#
-# Displaces: p = paste_after in select mode.
-
-[keys.select]
-p = "replace_with_yanked"
